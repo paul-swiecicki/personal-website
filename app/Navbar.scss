@@ -1,17 +1,17 @@
-$h-padding: 20px;
+@import 'variables.scss';
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--max-width);
+  max-width: $max-width;
   margin: auto;
-  padding: 0.5rem $h-padding;
+  padding: 1rem 0;
   text-transform: uppercase;
   font-weight: bold;
 
   &__logo {
-    height: 40px;
+    height: 3rem;
   }
 
   &__links {
@@ -19,6 +19,6 @@ $h-padding: 20px;
   }
 
   &__link {
-    margin-left: 2em;
+    margin-left: 2rem;
   }
 }
