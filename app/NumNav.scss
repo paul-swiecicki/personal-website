@@ -1,0 +1,30 @@
+@import 'variables.scss';
+
+.num-nav {
+  position: absolute;
+  left: $h-padding;
+  bottom: 1rem;
+  font-weight: bold;
+  color: #a8a8a8;
+
+  &__number {
+    display: flex;
+    align-items: center;
+
+    &--active {
+      color: #000;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      background: #000;
+      height: 2px;
+    }
+
+    &--active::before {
+      margin-right: 0.6rem;
+      width: 2.5rem;
+    }
+  }
+}
