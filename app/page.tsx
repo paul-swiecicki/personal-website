@@ -1,21 +1,45 @@
 import Image from 'next/image'
 import logo from '../public/ps-logo.svg'
+import rightArrow from '../public/arrow-forward-sharp.svg'
+import { links } from '../data/links'
+import './page.scss'
 
 export default function Home() {
+  const placeNavNums = (links: Record<string, string>) => {
+    let linkCount = 0
+
+    return Object.keys(links).map((key) => {
+      linkCount++
+
+      return (
+        <li
+          className={`home__nav-num home__nav-num${
+            linkCount === 1 ? '--active' : ''
+          }`}
+        >{`0${linkCount}`}</li>
+      )
+    })
+  }
+
   return (
     <main>
-      <Image src={logo} alt="" loading="eager"></Image>
+      <section className="home">
+        <Image className="home__logo" src={logo} alt="" loading="eager"></Image>
 
-      <h1 className="title">Paul Ś</h1>
-      <p className="subtitle">Web Developer</p>
-      <p className="description">
-        I'm a web developer who loves to progress and learn new things. I work
-        mainly in frontend but I also know a few things about backend and have a
-        little bit of design sense. All of that is confirmed by this and other
-        websites and projects I created, so go ahead and check them out!
-      </p>
+        <h1 className="home__title">Paul Ś.</h1>
+        <p className="home__subtitle">Web Developer</p>
+        <p className="home__description">
+          I'm a web developer who loves to progress and learn new things. I work
+          mainly in frontend but I also know a few things about backend and have
+          a little bit of design sense. All of that is confirmed by this and
+          other websites and projects I created, so go ahead and check them out!
+        </p>
 
-      <button className="btn-down">my work</button>
+        <button className="home__btn-down">
+          my work <Image src={rightArrow} alt=""></Image>
+        </button>
+        <ol className="home__nav-numbers">{placeNavNums(links)}</ol>
+      </section>
     </main>
   )
 }

@@ -2,7 +2,7 @@ import './globals.scss'
 import Navbar from './Navbar'
 import { Montserrat } from '@next/font/google'
 
-const font = Montserrat({ subsets: ['latin'] })
+const font = Montserrat({ subsets: ['latin', 'latin-ext'] })
 
 export default function RootLayout({
   children,

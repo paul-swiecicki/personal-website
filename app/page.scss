@@ -1,0 +1,80 @@
+@import 'variables.scss';
+
+.home {
+  display: flex;
+  flex-flow: column;
+
+  &__logo {
+    width: clamp(6rem, 40%, 16rem);
+    margin: 4rem auto;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 3rem;
+  }
+
+  &__subtitle {
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0.1rem 1rem;
+    width: max-content;
+    font-weight: bold;
+    margin: 1.5rem 0 1.2rem;
+  }
+
+  &__btn-down {
+    border: 2px solid black;
+    background: none;
+    padding: 0.5rem 1.5rem;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    width: max-content;
+    position: absolute;
+    right: $h-padding;
+    bottom: 0;
+    transform: rotate(90deg);
+    transform-origin: right top;
+    display: flex;
+    white-space: nowrap;
+    height: min-content;
+    align-items: center;
+    margin-bottom: -2rem;
+
+    img {
+      width: 1.8rem;
+      margin-left: 1rem;
+    }
+  }
+
+  &__nav-numbers {
+    position: absolute;
+    left: $h-padding;
+    bottom: 1rem;
+    font-weight: bold;
+    color: #a8a8a8;
+  }
+
+  &__nav-num {
+    display: flex;
+    align-items: center;
+
+    &--active {
+      color: #000;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      background: #000;
+      height: 2px;
+    }
+
+    &--active::before {
+      margin-right: 0.6rem;
+      width: 2.5rem;
+    }
+  }
+}
