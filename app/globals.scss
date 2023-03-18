@@ -27,7 +27,6 @@ html {
   height: 100vh;
   height: 100svh;
   color: black;
-  line-height: 1.4rem;
 }
 
 body {
@@ -47,8 +46,8 @@ li {
 }
 
 img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,4 +59,13 @@ img {
 h1,
 h2 {
   text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+p {
+  line-height: 1.4rem;
 }

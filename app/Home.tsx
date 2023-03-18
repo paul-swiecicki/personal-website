@@ -6,7 +6,9 @@ import './Home.scss'
 export default function Home() {
   return (
     <section className="home">
-      <Image className="home__logo" src={logo} alt="" loading="eager"></Image>
+      <div className="home__logo">
+        <Image src={logo} alt="" loading="eager"></Image>
+      </div>
 
       <h1 className="home__title">Paul Ś.</h1>
       <p className="home__subtitle">Web Developer</p>
