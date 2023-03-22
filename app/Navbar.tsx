@@ -4,9 +4,17 @@ import logo from '../public/ps-logo.svg'
 import { links } from '../data/links'
 import './Navbar.scss'
 
-function NavLink({ children, href }: { children: string; href: string }) {
+function NavLink({
+  children,
+  href,
+  key,
+}: {
+  children: string
+  href: string
+  key: string
+}) {
   return (
-    <li className="navbar__link">
+    <li className="navbar__link" key={key}>
       <Link href={href}>{children}</Link>
     </li>
   )
