@@ -1,16 +1,20 @@
-.btn__inner {
-  text-transform: uppercase;
-  margin-top: 1rem;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  border: 2px solid #000;
-  padding: 0.4rem 1.5rem;
-  background: #fff;
+.btn {
+  margin-right: 1rem;
+
+  &__inner {
+    text-transform: uppercase;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    border: 2px solid #000;
+    padding: 0.4rem 1.3rem;
+    background: #fff;
+  }
 
   svg {
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 1.5rem;
+    width: 1.5rem;
     margin-left: 0.4rem;
   }
 }
