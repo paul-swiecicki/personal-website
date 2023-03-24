@@ -2,9 +2,8 @@
 
 import Image, { StaticImageData } from 'next/image'
 import { PropsWithChildren, ReactNode } from 'react'
-
 import { Icon } from '@iconify/react'
-import Link from 'next/link'
+import Button from './Button'
 
 type Tag = 'frontend' | 'backend' | 'design' | 'CMS'
 
@@ -23,7 +22,8 @@ interface Props {
   title: string
   tags?: Tag[]
   techStack: (keyof typeof techBadges)[]
-  liveLink: string
+  liveLink?: string
+  githubLink?: string
 }
 
 export default function Project({
@@ -32,6 +32,7 @@ export default function Project({
   tags,
   techStack,
   liveLink,
+  githubLink,
   children,
 }: PropsWithChildren<Props>) {
   return (
@@ -53,7 +54,9 @@ export default function Project({
             : ''}
         </ul>
         <p className="project__desc">{children}</p>
-        <ul className="project__tech-stack">
+
+        <div className="project__tech-label">tech stack</div>
+        <ul className="project__tech">
           {techStack.map((tech) => (
             <li key={tech}>
               <Icon icon={techBadges[tech]} />
@@ -61,9 +64,20 @@ export default function Project({
           ))}
         </ul>
 
-        <div className="project__live-btn">
-          <Link href={liveLink}>Live</Link>
-          <Icon icon="material-symbols:arrow-right-alt" />
+        <div className="project__btns">
+          {liveLink ? (
+            <Button link={liveLink}>
+              Live
+              <Icon icon="material-symbols:live-tv-outline-sharp" />
+            </Button>
+          ) : null}
+
+          {githubLink ? (
+            <Button link={githubLink}>
+              GitHub
+              <Icon icon="mdi:github" />
+            </Button>
+          ) : null}
         </div>
       </div>
     </div>

@@ -40,31 +40,28 @@
     margin: 0 0.4rem 0.4rem 0;
   }
 
-  &__tech-stack {
+  &__tech-label {
+    margin: 1rem 0 0.1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__tech {
     max-height: 2.6rem;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    margin-top: 1rem;
 
     svg {
       width: 2.6rem;
       height: 2.6rem;
       margin-right: 0.4rem;
     }
-  }
 
-  &__live-btn {
-    text-transform: uppercase;
-    margin-top: 1rem;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-
-    svg {
-      height: 2rem;
-      width: 2rem;
-      margin-left: 0.4rem;
+    svg.iconify--logos {
+      height: 2.4rem;
     }
   }
 }
