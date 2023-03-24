@@ -48,10 +48,11 @@
   }
 
   &__tech {
-    max-height: 2.6rem;
+    height: min-content;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 
     svg {
       width: 2.6rem;
