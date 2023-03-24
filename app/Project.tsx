@@ -4,18 +4,9 @@ import Image, { StaticImageData } from 'next/image'
 import { PropsWithChildren, ReactNode } from 'react'
 import { Icon } from '@iconify/react'
 import Button from './Button'
+import { techBadges } from '@/data/techBadges'
 
-type Tag = 'frontend' | 'backend' | 'design' | 'CMS'
-
-const techBadges = {
-  gatsby: 'vscode-icons:file-type-gatsby',
-  react: 'vscode-icons:file-type-reactjs',
-  'styled components': 'vscode-icons:file-type-styled',
-  html: 'vscode-icons:file-type-html',
-  contentful: 'logos:contentful',
-  javascript: 'vscode-icons:file-type-js-official',
-  css: 'vscode-icons:file-type-css',
-}
+type Tag = 'frontend' | 'backend' | 'design' | 'desktop' | 'web'
 
 interface Props {
   imgSrc: StaticImageData
@@ -74,7 +65,7 @@ export default function Project({
 
           {githubLink ? (
             <Button link={githubLink}>
-              GitHub
+              Source
               <Icon icon="mdi:github" />
             </Button>
           ) : null}
