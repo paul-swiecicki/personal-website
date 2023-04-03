@@ -1,4 +1,4 @@
-const techBadges = {
+const techBadges: Record<string, string> = {
   gatsby: 'vscode-icons:file-type-gatsby',
   react: 'vscode-icons:file-type-reactjs',
   'styled components': 'vscode-icons:file-type-styled',
