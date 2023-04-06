@@ -4,7 +4,7 @@ import BloonBot from '../public/bloonbot.png'
 import Project from './Project'
 import './Project.scss'
 
-export default function Projects() {
+export default function ProjectsList() {
   return (
     <section className="projects">
       <h2>My work</h2>
