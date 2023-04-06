@@ -10,7 +10,7 @@ const techBadges = {
   next: 'skill-icons:nextjs-dark',
   scss: 'skill-icons:sass',
 
-  node: 'skill-icons:nodejs-dark',
+  node: 'skill-icons:nodejs-light',
   mongodb: 'skill-icons:mongodb',
   express: 'skill-icons:expressjs-dark',
   docker: 'skill-icons:docker',
@@ -20,7 +20,7 @@ const techBadges = {
 
   electron: 'skill-icons:electron',
   robotjs: 'tabler:square-letter-r',
-  python: 'skill-icons:python-dark',
+  python: 'skill-icons:python-light',
   contentful: 'logos:contentful',
   git: 'skill-icons:git',
   github: 'skill-icons:github-light',
