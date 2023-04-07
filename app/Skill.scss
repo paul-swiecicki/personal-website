@@ -1,0 +1,22 @@
+.skill {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &__icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    margin: 0 0.5rem;
+  }
+
+  &__label {
+    margin-top: 0.2rem;
+    width: 4.6rem;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    color: #555;
+  }
+}
