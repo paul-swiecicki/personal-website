@@ -9,6 +9,7 @@ const techBadges = {
   css: 'skill-icons:css',
   next: 'skill-icons:nextjs-dark',
   scss: 'skill-icons:sass',
+  rwd: 'mdi:responsive',
 
   node: 'skill-icons:nodejs-light',
   mongodb: 'skill-icons:mongodb',
@@ -27,6 +28,7 @@ const techBadges = {
   linux: 'skill-icons:linux-light',
   regex: 'skill-icons:regex-light',
   vscode: 'skill-icons:vscode-dark',
+  mocha: 'logos:mocha',
 
   figma: 'skill-icons:figma-dark',
   photoshop: 'skill-icons:photoshop',
