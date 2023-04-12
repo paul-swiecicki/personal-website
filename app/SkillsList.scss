@@ -1,6 +1,7 @@
 .skills {
   &__category {
     margin-bottom: 2.6rem;
+    border-left: 2px solid #000;
   }
 
   &__category-label {
@@ -30,5 +31,6 @@
     grid-template-columns: repeat(auto-fill, 80px);
     grid-gap: 0.8rem;
     justify-content: space-between;
+    padding: 1rem;
   }
 }
