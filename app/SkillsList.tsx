@@ -6,15 +6,15 @@ import './SkillsList.scss'
 export function SkillsList() {
   const mapSkills = (skills: Skills) => {
     let nodes: JSX.Element[] = []
+
     for (const category in skills) {
       const skillsInCategory = skills[category]
-
       nodes.push(
-        <div className="skills__category">
+        <div className="skills__category" key={category}>
           <span className="skills__category-label">{category}</span>
           <div className="skills__badges">
-            {skillsInCategory.map((skill) => (
-              <Skill badge={skill.badge} name={skill.name}></Skill>
+            {skillsInCategory.map(({ name, badge, since }) => (
+              <Skill badge={badge} name={name} key={name}></Skill>
             ))}
           </div>
         </div>,
