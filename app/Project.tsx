@@ -35,13 +35,11 @@ export default function Project({
         <div className="project__title">{title}</div>
         <ul className="project__tag-list">
           {tags
-            ? tags.map(
-                (tag): ReactNode => (
-                  <li className="project__tag" key={tag}>
-                    {tag}
-                  </li>
-                ),
-              )
+            ? tags.map((tag) => (
+                <li className="project__tag" key={tag}>
+                  {tag}
+                </li>
+              ))
             : ''}
         </ul>
         <p className="project__desc">{children}</p>
