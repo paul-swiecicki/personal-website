@@ -6,6 +6,7 @@ import './Skill.scss'
 interface Props {
   name: string
   badge: string
+  key: string
 }
 export function Skill({ badge, name }: Props) {
   return (

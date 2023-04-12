@@ -10,6 +10,7 @@ export default function NumNav() {
 
       return (
         <li
+          key={linkCount}
           className={`num-nav__number ${
             linkCount === 1 ? 'num-nav__number--active' : ''
           }`}
