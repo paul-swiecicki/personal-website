@@ -49,12 +49,13 @@ export default function ProjectsList() {
         title="Auto EtLog"
         imgSrc={AutoEtlog}
         tags={['frontend', 'backend', 'desktop']}
-        techStack={['electron', 'robotjs', 'html', 'javascript', 'css']}
+        techStack={['electron', 'html', 'javascript', 'css']}
         githubLink="https://github.com/paul-swiecicki/auto-etlog"
       >
         App built on Electron.js for the vegetable supplier that automates
-        printing logistical labels. Reduced the amount of manual work needed for
-        the task by about 70%.
+        printing logistical labels by extracting data from Excel file,
+        calculating it and scraping ETlog app using Robot.js. Reduced amount of
+        manual work needed for the task by about 70%.
       </Project>
 
       <Project
