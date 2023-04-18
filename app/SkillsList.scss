@@ -4,6 +4,47 @@
     border-left: 2px solid #000;
   }
 
+  .view {
+    margin-bottom: 1rem;
+
+    &__label {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    svg {
+      padding: 0.2rem;
+      border: 2px solid #fff;
+    }
+
+    svg,
+    svg path {
+      fill: inherit;
+      stroke: inherit;
+    }
+
+    &__icons {
+      display: flex;
+    }
+
+    &__icon {
+      width: 3rem;
+      fill: #c5c5c5;
+      stroke: #c5c5c5;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    &__icon--chosen svg {
+      box-sizing: border-box;
+      // background: #ececec;
+      fill: #000;
+      stroke: #000;
+      border: 2px solid #000;
+    }
+  }
+
   &__category-label {
     margin-bottom: 0.8rem;
     text-transform: uppercase;
