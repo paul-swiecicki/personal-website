@@ -1,5 +1,6 @@
 'use client'
-import { Icon } from '@iconify/react'
+
+import { Icon } from './Icon'
 import React, { useState } from 'react'
 import { skills, Skills } from '../data/skills'
 import { Skill } from './Skill'

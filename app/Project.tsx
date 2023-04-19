@@ -1,8 +1,6 @@
-'use client'
-
 import Image, { StaticImageData } from 'next/image'
 import { PropsWithChildren, ReactNode } from 'react'
-import { Icon } from '@iconify/react'
+import { Icon } from './Icon'
 import Button from './Button'
 import { techBadges } from '@/data/techBadges'
 
