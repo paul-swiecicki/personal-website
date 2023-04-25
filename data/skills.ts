@@ -6,13 +6,13 @@ const skills: Skills = {
   frontend: [
     { name: 'JavaScript', badge: tb.javascript, since: 2018 },
     { name: 'TypeScript', badge: tb.typescript, since: 2022 },
-    { name: 'React', badge: tb.react, since: 2020 },
+    { name: 'React', badge: tb.react, since: 2019 },
     { name: 'Redux', badge: tb.redux, since: 2020 },
     { name: 'Next', badge: tb.next, since: 2023 },
     { name: 'Gatsby', badge: tb.gatsby, since: 2021 },
-    { name: 'HTML', badge: tb.html, since: 2018 },
+    { name: 'HTML', badge: tb.html, since: 2017 },
     { name: 'SCSS', badge: tb.scss, since: 2020 },
-    { name: 'CSS', badge: tb.css, since: 2018 },
+    { name: 'CSS', badge: tb.css, since: 2017 },
     {
       name: 'Styled Components',
       badge: tb['styled components'],
@@ -36,7 +36,7 @@ const skills: Skills = {
     { name: 'After Effects', badge: tb['after effects'], since: 2015 },
   ],
 
-  other: [
+  'tools & others': [
     { name: 'Git', badge: tb.git, since: 2019 },
     { name: 'GitHub', badge: tb.github, since: 2019 },
     { name: 'Linux', badge: tb.linux, since: 2018 },
