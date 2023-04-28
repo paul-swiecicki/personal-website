@@ -1,10 +1,16 @@
+@import './variables.scss';
+
 .project {
   margin-bottom: 5rem;
 
   &__image {
     width: 100%;
     position: relative;
-    filter: drop-shadow(-30px 39px 70px rgba(0, 0, 0, 0.1));
+    height: min-content;
+
+    img {
+      filter: drop-shadow(-30px 20px 40px rgba(0, 0, 0, 0.2));
+    }
 
     &::after {
       content: '';
@@ -62,6 +68,22 @@
 
     svg.iconify--logos {
       height: 2.4rem;
+    }
+  }
+
+  @media screen and (min-width: $max-width-with-reserve) {
+    display: flex;
+    margin-bottom: 12rem;
+
+    &__image {
+      min-width: 65%;
+      max-width: 65%;
+      margin-right: 5rem;
+
+      &::after {
+        left: -40px;
+        top: 40px;
+      }
     }
   }
 }
