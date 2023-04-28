@@ -65,6 +65,13 @@
     font-weight: bold;
     margin-top: 0.3rem;
   }
+
+  @media screen and (min-width: $max-width-with-reserve) {
+    &__wrapper {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
 }
 
 .social {
