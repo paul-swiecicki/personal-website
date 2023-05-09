@@ -72,6 +72,8 @@
   }
 
   @media screen and (min-width: $max-width-with-reserve) {
+    $trans: 0.4s transform cubic-bezier(0, 0.52, 0.29, 1);
+
     display: flex;
     margin-bottom: 12rem;
 
@@ -79,11 +81,21 @@
       min-width: 65%;
       max-width: 65%;
       margin-right: 5rem;
+      transition: $trans;
 
       &::after {
         left: -40px;
         top: 40px;
+        transition: $trans;
       }
+    }
+
+    &__image:hover::after {
+      transform: translate(20px, -20px);
+    }
+
+    &__image:hover {
+      transform: translate(-10px, 10px);
     }
   }
 }
