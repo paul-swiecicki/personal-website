@@ -5,6 +5,7 @@
   flex-flow: column;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
 
   &__logo {
     width: clamp(6rem, 40%, 16rem);
@@ -34,7 +35,7 @@
     font-size: 1.2rem;
     width: max-content;
     position: absolute;
-    right: $h-padding;
+    right: 0;
     bottom: 0;
     transform: rotate(90deg);
     transform-origin: right top;
@@ -42,11 +43,28 @@
     white-space: nowrap;
     height: min-content;
     align-items: center;
-    margin-bottom: -2rem;
+    margin-bottom: 50px;
 
     img {
       width: 1.8rem;
       margin-left: 1rem;
+    }
+  }
+
+  @media screen and (min-width: $max-width) {
+    align-items: center;
+
+    &__btn-down {
+      margin-bottom: 70px;
+    }
+
+    &__title {
+      font-size: 5rem;
+    }
+
+    &__description {
+      max-width: 500px;
+      text-align: center;
     }
   }
 }
