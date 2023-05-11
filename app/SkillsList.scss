@@ -38,7 +38,6 @@
 
     &__icon--chosen svg {
       box-sizing: border-box;
-      // background: #ececec;
       fill: #000;
       stroke: #000;
       border: 2px solid #000;
@@ -56,21 +55,39 @@
     display: inline-flex;
     align-items: center;
 
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       height: 100%;
       background: #000;
-      width: 200%;
-      z-index: -1;
-      left: -100%;
+      z-index: -2;
+      right: 0;
+      left: -30vw;
     }
+
+    // with gradient
+
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   height: 100%;
+    //   background: rgb(255, 255, 255);
+    //   background: linear-gradient(
+    //     90deg,
+    //     rgba(255, 255, 255, 1) 0%,
+    //     rgba(255, 255, 255, 1) 70%,
+    //     rgba(0, 0, 0, 1) 100%
+    //   );
+    //   z-index: -1;
+    //   right: 100%;
+    //   left: -30vw;
+    // }
   }
 
   &__badges {
     display: grid;
     grid-template-columns: repeat(auto-fill, 80px);
-    grid-gap: 0.8rem;
+    gap: 1.6rem 0.8rem;
     justify-content: space-between;
     padding: 1rem;
   }
