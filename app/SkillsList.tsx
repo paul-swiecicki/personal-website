@@ -37,7 +37,7 @@ export function SkillsList() {
   return (
     <section className="skills">
       <h2>My Skills</h2>
-      <div className="view">
+      {/* <div className="view">
         <p className="view__label">view</p>
         <div className="view__icons">
           <div
@@ -57,7 +57,7 @@ export function SkillsList() {
             <Icon icon="material-symbols:grid-on-sharp"></Icon>
           </div>
         </div>
-      </div>
+      </div> */}
       {mapSkills(skills)}
     </section>
   )
