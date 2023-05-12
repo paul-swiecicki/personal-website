@@ -13,9 +13,9 @@ function NavLink({
   key: string
 }) {
   return (
-    <li className="navbar__link">
-      <Link href={href}>{children}</Link>
-    </li>
+    <a href={href}>
+      <li className="navbar__link">{children}</li>
+    </a>
   )
 }
 
@@ -29,11 +29,13 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar">
-      <div className="navbar__logo">
-        <Image src={logo} alt="" />
-      </div>
-      <ul className="navbar__links">{mapLinks(links)}</ul>
-    </nav>
+    <div className="navbar-wrapper">
+      <nav className="navbar">
+        <div className="navbar__logo">
+          <Image src={logo} alt="" />
+        </div>
+        <ul className="navbar__links">{mapLinks(links)}</ul>
+      </nav>
+    </div>
   )
 }
