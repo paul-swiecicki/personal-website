@@ -8,12 +8,25 @@
   z-index: 10;
 }
 
+.navbar-blurry-bg {
+  position: absolute;
+  left: -500px;
+  z-index: -1;
+  width: 200vw;
+  backdrop-filter: blur(50px);
+  height: calc(4.8rem + 50px);
+  top: -50px;
+  box-shadow: 0px 0px 40px 0px #00000012;
+  background: #fff6;
+}
+
 .navbar {
   padding: 1rem 0;
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: $max-width;
 
@@ -27,11 +40,13 @@
 
   @media screen and (min-width: $navbar-bp) {
     &__links {
+      display: flex;
       text-align: end;
     }
 
     &__link {
       margin-left: 2rem;
+      margin-bottom: 0;
     }
   }
 }

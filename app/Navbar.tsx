@@ -30,6 +30,7 @@ export default function Navbar() {
 
   return (
     <div className="navbar-wrapper">
+      <div className="navbar-blurry-bg"></div>
       <nav className="navbar">
         <div className="navbar__logo">
           <Image src={logo} alt="" />
