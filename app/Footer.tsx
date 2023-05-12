@@ -17,7 +17,7 @@ const socials = {
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="contact">
       <div className="footer__wrapper">
         <div className="footer__section--mail">
           <div className="footer__icon">
@@ -28,12 +28,14 @@ export default function Footer() {
             <div className="footer__text">paul.swiecicki2@gmail.com</div>
           </div>
         </div>
-        <div className="footer__section--top">
-          <div className="footer__icon footer__icon--up">
-            <Image src={ArrowUp} alt="" />
+        <a href="#home">
+          <div className="footer__section--top">
+            <div className="footer__icon footer__icon--up">
+              <Image src={ArrowUp} alt="" />
+            </div>
+            <div className="footer__text">Back To Top</div>
           </div>
-          <div className="footer__text">Back To Top</div>
-        </div>
+        </a>
         <div className="footer__section--socials">
           {Object.entries(socials).map(([name, { link, icon }]) => (
             <a className="social" target="_blank" href={link} key={name}>
