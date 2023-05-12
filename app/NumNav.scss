@@ -2,14 +2,15 @@
 
 .num-nav {
   position: absolute;
-  left: $h-padding;
-  bottom: 1rem;
+  left: 0;
+  bottom: 1.5rem;
   font-weight: bold;
   color: #a8a8a8;
 
   &__number {
     display: flex;
     align-items: center;
+    margin-top: 0.3rem;
 
     &--active {
       color: #000;
