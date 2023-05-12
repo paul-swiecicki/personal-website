@@ -35,7 +35,7 @@ export function SkillsList() {
   }
 
   return (
-    <section className="skills">
+    <section className="skills" id="skills">
       <h2>My Skills</h2>
       {/* <div className="view">
         <p className="view__label">view</p>
