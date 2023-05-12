@@ -1,6 +1,6 @@
 const links: Record<string, string> = {
   home: 'Home',
-  work: 'My work',
+  projects: 'My projects',
   skills: 'My skills',
   contact: 'Contact',
 }

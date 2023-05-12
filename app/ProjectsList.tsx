@@ -6,8 +6,8 @@ import './Project.scss'
 
 export default function ProjectsList() {
   return (
-    <section className="projects">
-      <h2>My work</h2>
+    <section className="projects" id="projects">
+      <h2>My projects</h2>
       <Project
         title="This website"
         imgSrc={EP}
