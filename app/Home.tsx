@@ -2,10 +2,11 @@ import Image from 'next/image'
 import logo from '../public/ps-logo.svg'
 import rightArrow from '../public/arrow-forward-sharp.svg'
 import './Home.scss'
+import NumNav from './NumNav'
 
 export default function Home() {
   return (
-    <section className="home">
+    <section className="home" id="home">
       <div className="home__logo">
         <Image src={logo} alt="" loading="eager"></Image>
       </div>
@@ -19,9 +20,13 @@ export default function Home() {
         websites and projects I created, so go ahead and check them out!
       </p>
 
-      <button className="home__btn-down">
-        my work <Image src={rightArrow} alt=""></Image>
-      </button>
+      <a href="#projects">
+        <button className="home__btn-down">
+          my work <Image src={rightArrow} alt=""></Image>
+        </button>
+      </a>
+
+      <NumNav></NumNav>
     </section>
   )
 }
