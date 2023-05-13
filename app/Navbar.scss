@@ -38,6 +38,18 @@
     margin-bottom: 1rem;
   }
 
+  &__links {
+    display: none;
+  }
+
+  &__burger {
+    display: flex;
+    align-items: center;
+    img {
+      width: 35px;
+    }
+  }
+
   @media screen and (min-width: $navbar-bp) {
     align-items: center;
 
@@ -50,5 +62,41 @@
       margin-left: 2rem;
       margin-bottom: 0;
     }
+
+    &__burger {
+      display: none;
+    }
+  }
+}
+
+.mobile-nav-wrapper {
+  height: 100vh;
+  height: 100dvh;
+  width: 150vw;
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.mobile-nav {
+  position: absolute;
+  padding: 1rem 0;
+  left: -100px;
+  padding-left: 100px;
+  bottom: 0;
+  font-weight: bold;
+  font-size: 3rem;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 40px 0px #00000012;
+  background: #fff9;
+
+  &__link {
+    padding: 1rem 0;
+    border-bottom: 2px solid #0002;
   }
 }
