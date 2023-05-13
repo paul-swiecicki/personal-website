@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import logo from '../public/ps-logo.svg'
+import logo from '../public/pauls-border.svg'
 import rightArrow from '../public/arrow-forward-sharp.svg'
 import './Home.scss'
 import NumNav from './NumNav'
