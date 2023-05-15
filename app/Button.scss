@@ -1,10 +1,12 @@
+@import './variables.scss';
+
 .btn {
   margin-right: 1rem;
   display: inline-block;
+  position: relative;
 
   &__inner {
     text-transform: uppercase;
-    margin-top: 1rem;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -17,5 +19,24 @@
     height: 1.5rem;
     width: 1.5rem;
     margin-left: 0.4rem;
+  }
+
+  $trans: 0.2s transform $bezier;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+    transition: $trans;
+    transform: translate(-3px, 3px);
+  }
+
+  &:hover::after {
+    transform: translate(-6px, 6px);
   }
 }
