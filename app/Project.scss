@@ -71,8 +71,12 @@
     }
   }
 
+  &__btns {
+    margin-top: 1rem;
+  }
+
   @media screen and (min-width: $max-width-with-reserve) {
-    $trans: 0.4s transform cubic-bezier(0, 0.52, 0.29, 1);
+    $trans: 0.4s transform $bezier;
 
     display: flex;
     margin-bottom: 12rem;
