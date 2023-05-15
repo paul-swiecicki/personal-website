@@ -26,7 +26,7 @@ export default function Home() {
         </button>
       </a>
 
-      <NumNav></NumNav>
+      {/* <NumNav></NumNav> */}
     </section>
   )
 }
