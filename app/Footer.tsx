@@ -47,7 +47,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="footer__section--copyright">
-          Copyright &copy; 2022 Paul&nbsp;Ś.
+          Copyright &copy; 2023 Paul&nbsp;Ś.
         </div>
       </div>
     </footer>
