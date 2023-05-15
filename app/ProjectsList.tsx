@@ -1,6 +1,7 @@
 import EP from '../public/EP.png'
 import AutoEtlog from '../public/auto-etlog.jpg'
 import BloonBot from '../public/bloonbot.png'
+import PaulSWebsite from '../public/pauls-portfolio.png'
 import Project from './Project'
 import './Project.scss'
 
@@ -10,7 +11,7 @@ export default function ProjectsList() {
       <h2>My projects</h2>
       <Project
         title="This website"
-        imgSrc={EP}
+        imgSrc={PaulSWebsite}
         tags={['frontend', 'design', 'web']}
         techStack={[
           'next',
