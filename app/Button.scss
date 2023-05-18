@@ -1,9 +1,12 @@
 @import './variables.scss';
 
+$trans: 0.2s transform $bezier;
+
 .btn {
   margin-right: 1rem;
   display: inline-block;
   position: relative;
+  transition: $trans;
 
   &__inner {
     text-transform: uppercase;
@@ -21,8 +24,6 @@
     margin-left: 0.4rem;
   }
 
-  $trans: 0.2s transform $bezier;
-
   &::after {
     content: '';
     position: absolute;
@@ -34,6 +35,10 @@
     border: 2px solid #000;
     transition: $trans;
     transform: translate(-3px, 3px);
+  }
+
+  &:hover {
+    transform: translate(3px, -3px);
   }
 
   &:hover::after {
