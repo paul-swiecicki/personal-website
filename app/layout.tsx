@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import { Montserrat } from '@next/font/google'
 import Footer from './Footer'
 
-const font = Montserrat({ subsets: ['latin', 'latin-ext'] })
+const font = Montserrat({ subsets: ['latin', 'latin-ext'], display: 'swap' })
 
 export default function RootLayout({
   children,
