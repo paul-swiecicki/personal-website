@@ -3,12 +3,14 @@ import logo from '../public/pauls-border.svg'
 import rightArrow from '../public/arrow-forward-sharp.svg'
 import './Home.scss'
 import NumNav from './NumNav'
+import LogoIntroAnim from '../public/lotties/logo-intro.json'
+import LottieAnimation from './LottieAnimation'
 
 export default function Home() {
   return (
     <section className="home" id="home">
       <div className="home__logo">
-        <Image src={logo} alt="" loading="eager"></Image>
+        <LottieAnimation animationData={LogoIntroAnim}></LottieAnimation>
       </div>
 
       <h1 className="home__title">Paul Ś.</h1>

@@ -10,9 +10,14 @@
   margin-bottom: 5rem;
 
   &__logo {
-    width: clamp(6rem, 50%, 16rem);
-    margin: 6rem auto 4rem;
-    padding-right: 30px;
+    width: clamp(6rem, 80%, 32rem);
+    margin: -1rem auto;
+    aspect-ratio: 1/1;
+    min-height: 30vh;
+
+    div {
+      height: 100%;
+    }
   }
 
   &__title {
