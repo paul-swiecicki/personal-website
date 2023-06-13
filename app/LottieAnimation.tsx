@@ -1,11 +1,11 @@
 'use client'
 
-import { LottieComponentProps, useLottie } from 'lottie-react'
+import { LottieComponentProps, LottieOptions, useLottie } from 'lottie-react'
 
 export default function LottieAnimation({
   animationData,
 }: LottieComponentProps) {
-  const options = {
+  const options: LottieOptions = {
     animationData,
     loop: false,
   }
