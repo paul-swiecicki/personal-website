@@ -9,10 +9,10 @@ const socials = {
     icon: 'mdi:linkedin',
   },
   GitHub: { link: 'https://github.com/paul-swiecicki', icon: 'mdi:github' },
-  Telegram: {
-    link: '',
-    icon: 'icon-park-outline:telegram',
-  },
+  // Telegram: {
+  //   link: '',
+  //   icon: 'icon-park-outline:telegram',
+  // },
 }
 
 export default function Footer() {
