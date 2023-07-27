@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { skills, Skills } from '../data/skills'
 import { Skill } from './Skill'
 import './SkillsList.scss'
+import SkillCanvas from './SkillCanvas'
 
 enum View {
   'atom',
@@ -37,7 +38,7 @@ export function SkillsList() {
   return (
     <section className="skills" id="skills">
       <h2>My Skills</h2>
-      {/* <div className="view">
+      <div className="view">
         <p className="view__label">view</p>
         <div className="view__icons">
           <div
@@ -57,8 +58,8 @@ export function SkillsList() {
             <Icon icon="material-symbols:grid-on-sharp"></Icon>
           </div>
         </div>
-      </div> */}
-      {mapSkills(skills)}
+      </div>
+      {view ? mapSkills(skills) : <SkillCanvas></SkillCanvas>}
     </section>
   )
 }
