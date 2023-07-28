@@ -107,6 +107,7 @@ const SkillCanvas = () => {
         }
 
         // Draw string connecting the ball to the center ball
+        ctx.globalCompositeOperation = 'destination-over'
         ctx.strokeStyle = 'black'
         ctx.beginPath()
         ctx.moveTo(ball.x, ball.y)
@@ -116,6 +117,7 @@ const SkillCanvas = () => {
         // Draw ball image
         const image = new Image()
         image.src = ball.img
+        ctx.globalCompositeOperation = 'source-over'
         ctx.drawImage(
           image,
           ball.x - ball.radius,
