@@ -25,7 +25,7 @@ Object.keys(images).forEach((imageName) => {
 
 const centerBall = {
   x: 400,
-  y: 300,
+  y: 400,
   radius: 10,
 }
 
@@ -36,8 +36,10 @@ const SkillCanvas = () => {
   const animationFrameHandle = useRef(null)
   const interval = useRef(null)
 
-  const maxDistance = 200
-  const elasticity = 0.4 // (0 to 1)
+  const softMaxDistance = 220
+  const softMaxDistanceForce = 0.0015
+  const maxDistance = 350
+  const elasticity = 0.48 // (0 to 1)
 
   const createUpdate = (ctx, canvas, balls) => {
     function update() {
@@ -52,6 +54,19 @@ const SkillCanvas = () => {
         const distance = Math.sqrt(
           (ball.x - centerBall.x) ** 2 + (ball.y - centerBall.y) ** 2,
         )
+
+        // Check if the ball is going beyond the softMaxDistance
+        if (distance > softMaxDistance) {
+          // Calculate the angle between the ball and the center ball
+          const angle = Math.atan2(centerBall.y - ball.y, centerBall.x - ball.x)
+
+          // Calculate the force towards the center
+          const force = (distance - softMaxDistance) * softMaxDistanceForce // Adjust the strength of the force as needed
+
+          // Apply the force to the ball's velocity
+          ball.dx += force * Math.cos(angle)
+          ball.dy += force * Math.sin(angle)
+        }
 
         // Check if the ball is going beyond the max distance
         if (distance > maxDistance) {
@@ -78,9 +93,9 @@ const SkillCanvas = () => {
             // Calculate the overlap distance
             const overlap = minDistance - distance
 
-            // Calculate the displacement vectors for the balls
-            const displacementX = overlap * Math.cos(angle)
-            const displacementY = overlap * Math.sin(angle)
+            // Calculate the displacement vectors for the balls (with elasticity)
+            const displacementX = overlap * Math.cos(angle) * elasticity
+            const displacementY = overlap * Math.sin(angle) * elasticity
 
             // Update the positions of the colliding balls
             ball.x -= displacementX * 0.5
@@ -141,6 +156,7 @@ const SkillCanvas = () => {
   }
 
   const ballRadius = 32
+  const randomSpawnForceMultiplier = 2
 
   const addBall = (imgSrc) => {
     const angle = Math.random() * Math.PI * 2
@@ -148,8 +164,8 @@ const SkillCanvas = () => {
       x: centerBall.x,
       y: centerBall.y,
       radius: ballRadius,
-      dx: (Math.random() * 2 - 1) * 2,
-      dy: (Math.random() * 2 - 1) * 2,
+      dx: (Math.random() * 2 - 1) * randomSpawnForceMultiplier,
+      dy: (Math.random() * 2 - 1) * randomSpawnForceMultiplier,
       img: imgSrc,
     }
     setBalls((prevBalls) => [...prevBalls, ball])
@@ -164,7 +180,7 @@ const SkillCanvas = () => {
       if (counter > skillImageSrcs.length - 1) return
       addBall(skillImageSrcs[counter])
       counter++
-    }, 200)
+    }, 100)
   }, [])
 
   useEffect(() => {
@@ -172,7 +188,7 @@ const SkillCanvas = () => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
     canvas.width = 800
-    canvas.height = 600
+    canvas.height = 800
 
     createUpdate(ctx, canvas, balls)
   }, [balls])
