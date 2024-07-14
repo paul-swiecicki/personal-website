@@ -23,12 +23,6 @@ Object.keys(images).forEach((imageName) => {
   skillImageSrcs.push(images[imageName].default.src)
 })
 
-const centerBall = {
-  x: 400,
-  y: 400,
-  radius: 40,
-}
-
 const SkillCanvas = () => {
   const canvasRef = useRef(null)
   const [balls, setBalls] = useState([])
@@ -36,12 +30,22 @@ const SkillCanvas = () => {
   const animationFrameHandle = useRef(null)
   const interval = useRef(null)
 
-  const softMinDistance = 100
+  const softMinDistance = 110
   const softMinDistanceForce = 0.0005
   const softMaxDistance = 220
   const softMaxDistanceForce = 0.0015
   const maxDistance = 350
-  const elasticity = 0.43 // (0 to 1) og 0.48
+  const elasticity = 0.44 // (0 to 1) og 0.48
+
+  const canvasSettings = {
+    width: 800,
+    height: 700,
+  }
+  const centerBall = {
+    x: canvasSettings.width / 2,
+    y: canvasSettings.height / 2,
+    radius: 60,
+  }
 
   const createUpdate = (ctx, canvas, balls) => {
     function update() {
@@ -215,18 +219,14 @@ const SkillCanvas = () => {
     cancelAnimationFrame(animationFrameHandle.current)
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    canvas.width = 800
-    canvas.height = 800
+    canvas.width = canvasSettings.width
+    canvas.height = canvasSettings.height
 
     createUpdate(ctx, canvas, balls)
   }, [balls])
 
-  // const handleAddBall = () => {
-  //   addBall(icon)
-  // }
-
   return (
-    <div>
+    <div className="canvas-container">
       <canvas ref={canvasRef} />
 
       {/* <button onClick={handleAddBall}>Add Ball</button> */}
