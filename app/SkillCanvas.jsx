@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import icon from '../public/skills/typescript.png'
+import icon from '../public/pauls-stroke.png'
 import { skills } from '../data/skills'
 
 const stringToFileName = (name) => {
@@ -26,7 +26,7 @@ Object.keys(images).forEach((imageName) => {
 const centerBall = {
   x: 400,
   y: 400,
-  radius: 10,
+  radius: 40,
 }
 
 const SkillCanvas = () => {
@@ -36,10 +36,12 @@ const SkillCanvas = () => {
   const animationFrameHandle = useRef(null)
   const interval = useRef(null)
 
+  const softMinDistance = 100
+  const softMinDistanceForce = 0.0005
   const softMaxDistance = 220
   const softMaxDistanceForce = 0.0015
   const maxDistance = 350
-  const elasticity = 0.48 // (0 to 1)
+  const elasticity = 0.43 // (0 to 1) og 0.48
 
   const createUpdate = (ctx, canvas, balls) => {
     function update() {
@@ -54,6 +56,17 @@ const SkillCanvas = () => {
         const distance = Math.sqrt(
           (ball.x - centerBall.x) ** 2 + (ball.y - centerBall.y) ** 2,
         )
+
+        if (distance < softMinDistance) {
+          const angle = Math.atan2(centerBall.y - ball.y, centerBall.x - ball.x)
+
+          // Calculate the force towards the center
+          const force = (distance - softMaxDistance) * softMinDistanceForce // Adjust the strength of the force as needed
+
+          // Apply the force to the ball's velocity
+          ball.dx += force * Math.cos(angle)
+          ball.dy += force * Math.sin(angle)
+        }
 
         // Check if the ball is going beyond the softMaxDistance
         if (distance > softMaxDistance) {
@@ -123,10 +136,11 @@ const SkillCanvas = () => {
 
         // Draw string connecting the ball to the center ball
         ctx.globalCompositeOperation = 'destination-over'
-        ctx.strokeStyle = 'black'
+        ctx.strokeStyle = '#ccc'
         ctx.beginPath()
         ctx.moveTo(ball.x, ball.y)
         ctx.lineTo(centerBall.x, centerBall.y)
+        ctx.lineWidth = 1
         ctx.stroke()
 
         // Draw ball image
@@ -147,7 +161,21 @@ const SkillCanvas = () => {
       ctx.beginPath()
       ctx.arc(centerBall.x, centerBall.y, centerBall.radius, 0, Math.PI * 2)
       ctx.closePath()
-      ctx.fill()
+
+      // console.log(balls)
+      if (balls.length) {
+        const image = new Image()
+        image.src = icon.src
+        ctx.globalCompositeOperation = 'source-over'
+        ctx.drawImage(
+          image,
+          centerBall.x - centerBall.radius,
+          centerBall.y - centerBall.radius,
+          centerBall.radius * 2,
+          centerBall.radius * 2,
+        )
+      }
+      // ctx.fill()
 
       animationFrameHandle.current = requestAnimationFrame(update)
     }

@@ -39,7 +39,7 @@ export function SkillsList() {
     <section className="skills" id="skills">
       <h2>My Skills</h2>
       <div className="view">
-        <p className="view__label">view</p>
+        <p className="view__label">select view mode</p>
         <div className="view__icons">
           <div
             className={`view__icon ${
