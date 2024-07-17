@@ -100,3 +100,15 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 600px) {
+  .canvas-container {
+    height: 100vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .canvas-container {
+    margin-top: -50px;
+  }
+}
