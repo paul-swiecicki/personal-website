@@ -2,33 +2,43 @@ import React, { useEffect, useRef, useState } from 'react'
 import icon from '../public/pauls-stroke.png'
 import { skills } from '../data/skills'
 
-const stringToFileName = (name) => {
+type Ball = {
+  x: number
+  y: number
+  radius: number
+  dx: number
+  dy: number
+  img: string
+}
+
+const stringToFileName = (name: string) => {
   const fileName = name.toLowerCase().replace(' ', '_')
   return fileName
 }
 
-const importAll = (r) => {
-  let images = {}
+const importAll = (r: __WebpackModuleApi.RequireContext) => {
+  let images: Record<string, { default: { src: string } }> = {}
   const requireKeys = r.keys()
   requireKeys.slice(requireKeys.length / 2).map((item, index) => {
     images[item.replace('./', '')] = r(item)
   })
+
   return images
 }
 
 const images = importAll(require.context('../public/skills', false, /\.(png)$/))
-const skillImageSrcs = []
+const skillImageSrcs: string[] = []
 
 Object.keys(images).forEach((imageName) => {
   skillImageSrcs.push(images[imageName].default.src)
 })
 
 const SkillCanvas = () => {
-  const canvasRef = useRef(null)
-  const [balls, setBalls] = useState([])
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [balls, setBalls] = useState<Ball[]>([])
 
-  const animationFrameHandle = useRef(null)
-  const interval = useRef(null)
+  const animationFrameHandle = useRef<number | null>(null)
+  const interval = useRef<NodeJS.Timeout | null>(null)
 
   const softMinDistance = 110
   const softMinDistanceForce = 0.0005
@@ -47,7 +57,11 @@ const SkillCanvas = () => {
     radius: 60,
   }
 
-  const createUpdate = (ctx, canvas, balls) => {
+  const createUpdate = (
+    ctx: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement,
+    balls: Ball[],
+  ) => {
     function update() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -179,7 +193,6 @@ const SkillCanvas = () => {
           centerBall.radius * 2,
         )
       }
-      // ctx.fill()
 
       animationFrameHandle.current = requestAnimationFrame(update)
     }
@@ -190,7 +203,7 @@ const SkillCanvas = () => {
   const ballRadius = 32
   const randomSpawnForceMultiplier = 2
 
-  const addBall = (imgSrc) => {
+  const addBall = (imgSrc: string) => {
     const angle = Math.random() * Math.PI * 2
     const ball = {
       x: centerBall.x,
@@ -204,7 +217,7 @@ const SkillCanvas = () => {
   }
 
   useEffect(() => {
-    clearInterval(interval.current)
+    if (interval.current) clearInterval(interval.current)
     setBalls([])
 
     let counter = 0
@@ -216,9 +229,14 @@ const SkillCanvas = () => {
   }, [])
 
   useEffect(() => {
-    cancelAnimationFrame(animationFrameHandle.current)
+    if (animationFrameHandle.current)
+      cancelAnimationFrame(animationFrameHandle.current)
     const canvas = canvasRef.current
+    if (!canvas) return
+
     const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
     canvas.width = canvasSettings.width
     canvas.height = canvasSettings.height
 
