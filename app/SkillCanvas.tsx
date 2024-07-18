@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import icon from '../public/pauls-stroke.png'
-import { skills } from '../data/skills'
+import SkillsAtomLogo from '../public/pauls-stroke.png'
+import { useInView } from 'react-intersection-observer'
 
 type Ball = {
   x: number
@@ -9,11 +9,6 @@ type Ball = {
   dx: number
   dy: number
   img: string
-}
-
-const stringToFileName = (name: string) => {
-  const fileName = name.toLowerCase().replace(' ', '_')
-  return fileName
 }
 
 const importAll = (r: __WebpackModuleApi.RequireContext) => {
@@ -39,6 +34,7 @@ const SkillCanvas = () => {
 
   const animationFrameHandle = useRef<number | null>(null)
   const interval = useRef<NodeJS.Timeout | null>(null)
+  const didSkillAnimationRun = useRef<boolean | null>(false)
 
   const softMinDistance = 110
   const softMinDistanceForce = 0.0005
@@ -51,6 +47,7 @@ const SkillCanvas = () => {
     width: 800,
     height: 700,
   }
+
   const centerBall = {
     x: canvasSettings.width / 2,
     y: canvasSettings.height / 2,
@@ -183,7 +180,7 @@ const SkillCanvas = () => {
       // console.log(balls)
       if (balls.length) {
         const image = new Image()
-        image.src = icon.src
+        image.src = SkillsAtomLogo.src
         ctx.globalCompositeOperation = 'source-over'
         ctx.drawImage(
           image,
@@ -216,7 +213,10 @@ const SkillCanvas = () => {
     setBalls((prevBalls) => [...prevBalls, ball])
   }
 
-  useEffect(() => {
+  const initializeSkillAnimation = () => {
+    if (didSkillAnimationRun.current) return
+    didSkillAnimationRun.current = true
+
     if (interval.current) clearInterval(interval.current)
     setBalls([])
 
@@ -226,7 +226,7 @@ const SkillCanvas = () => {
       addBall(skillImageSrcs[counter])
       counter++
     }, 100)
-  }, [])
+  }
 
   useEffect(() => {
     if (animationFrameHandle.current)
@@ -243,8 +243,16 @@ const SkillCanvas = () => {
     createUpdate(ctx, canvas, balls)
   }, [balls])
 
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+  })
+
+  useEffect(() => {
+    if (inView) initializeSkillAnimation()
+  }, [inView])
+
   return (
-    <div className="canvas-container">
+    <div className="canvas-container" ref={ref}>
       <canvas ref={canvasRef} />
 
       {/* <button onClick={handleAddBall}>Add Ball</button> */}
