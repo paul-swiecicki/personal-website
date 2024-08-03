@@ -18,9 +18,9 @@ function NavLink({
   parentClass: string
 }) {
   return (
-    <a href={href}>
-      <li className={`${parentClass}__link`}>{children}</li>
-    </a>
+    <li className={`${parentClass}__link`}>
+      <a href={href}>{children}</a>
+    </li>
   )
 }
 
