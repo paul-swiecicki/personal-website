@@ -54,14 +54,36 @@
   &__icon--up {
     width: 5rem;
     height: 5rem;
+    position: relative;
+    z-index: 2;
 
     img {
-      height: 100%;
+      position: relative;
+      height: 200%;
       margin-top: 7px;
+      transition: 0.4s transform $bezier;
+      z-index: 0;
+    }
+
+    &:hover img {
+      transform: translateY(-3rem);
+    }
+
+    .footer__line {
+      height: 5rem;
+      width: 1rem;
+      background: #fff;
+      position: absolute;
+      top: calc(100% + 3px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
     }
   }
 
   &__text {
+    position: relative;
+    z-index: 3;
     font-weight: bold;
     margin-top: 0.3rem;
   }

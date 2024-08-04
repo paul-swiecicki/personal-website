@@ -1,6 +1,6 @@
 import { Icon } from './Icon'
 import './Footer.scss'
-import ArrowUp from '../public/arrow-up.svg'
+import ArrowUp from '../public/arrow-up-long.svg'
 import Image from 'next/image'
 
 const socials = {
@@ -32,6 +32,7 @@ export default function Footer() {
           <div className="footer__section--top">
             <div className="footer__icon footer__icon--up">
               <Image src={ArrowUp} alt="" />
+              <div className="footer__line"></div>
             </div>
             <div className="footer__text">Back To Top</div>
           </div>
