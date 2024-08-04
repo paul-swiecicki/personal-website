@@ -9,6 +9,7 @@ type Ball = {
   dx: number
   dy: number
   img: string
+  isDragged: boolean
 }
 
 const importAll = (r: __WebpackModuleApi.RequireContext) => {
@@ -41,7 +42,7 @@ const SkillCanvas = () => {
   const softMaxDistance = 220
   const softMaxDistanceForce = 0.0015
   const maxDistance = 350
-  const elasticity = 0.44 // (0 to 1) og 0.48
+  const elasticity = 0.4 // (0 to 1) og 0.48
 
   const canvasSettings = {
     width: 800,
@@ -59,13 +60,69 @@ const SkillCanvas = () => {
     canvas: HTMLCanvasElement,
     balls: Ball[],
   ) => {
+    let mouseX = 0
+    let mouseY = 0
+    let isHeld = false
+
+    canvas.addEventListener('mousedown', (e) => {
+      isHeld = true
+
+      let rect = canvas.getBoundingClientRect()
+      mouseX = e.clientX - rect.left
+      mouseY = e.clientY - rect.top
+      if (!mouseX || !mouseY) return
+      // if (mouseX > rect.right || mouseY > rect.bottom) {
+      //   isHeld = false
+      //   return
+      // }
+
+      balls.forEach((ball) => {
+        const distance = Math.sqrt(
+          (mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2,
+        )
+        ball.isDragged = distance < ball.radius
+      })
+    })
+
+    window.addEventListener('mouseup', (e) => {
+      isHeld = false
+      balls.forEach((ball) => {
+        ball.isDragged = false
+      })
+    })
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isHeld) return
+
+      let rect = canvas.getBoundingClientRect()
+      mouseX = e.clientX - rect.left
+      mouseY = e.clientY - rect.top
+      // let rect = canvas.getBoundingClientRect()
+      // mouseX = event.clientX - rect.left
+      // mouseY = event.clientY - rect.top
+
+      // balls.forEach((ball) => {
+      //   const distance = Math.sqrt(
+      //     (mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2,
+      //   )
+      //   ball.isHovered = distance < ball.radius
+      // })
+    })
+
     function update() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+      let isBallControlled = false
       balls.forEach((ball, index) => {
-        // Update ball position
-        ball.x += ball.dx
-        ball.y += ball.dy
+        if (!ball.isDragged) {
+          // Update ball position
+          ball.x += ball.dx
+          ball.y += ball.dy
+        } else if (!isBallControlled) {
+          isBallControlled = true
+          ball.x = mouseX
+          ball.y = mouseY
+        }
 
         // Calculate the distance from the center ball
         const distance = Math.sqrt(
@@ -109,8 +166,18 @@ const SkillCanvas = () => {
         // Check collision with other balls
         for (let i = index + 1; i < balls.length; i++) {
           const otherBall = balls[i]
-          const dx = otherBall.x - ball.x
-          const dy = otherBall.y - ball.y
+          // if (ball.isHovered) continue
+
+          let dx = 0
+          let dy = 0
+
+          // if (ball.isDragged) {
+          //   dx = mouseX - ball.x
+          //   dy = mouseY - ball.y
+          // } else {
+          dx = otherBall.x - ball.x
+          dy = otherBall.y - ball.y
+          // }
           const distance = Math.sqrt(dx * dx + dy * dy)
           const minDistance = ball.radius + otherBall.radius
 
@@ -126,8 +193,10 @@ const SkillCanvas = () => {
             const displacementY = overlap * Math.sin(angle) * elasticity
 
             // Update the positions of the colliding balls
-            ball.x -= displacementX * 0.5
-            ball.y -= displacementY * 0.5
+            if (!ball.isDragged) {
+              ball.x -= displacementX * 0.5
+              ball.y -= displacementY * 0.5
+            }
             otherBall.x += displacementX * 0.5
             otherBall.y += displacementY * 0.5
 
@@ -142,8 +211,10 @@ const SkillCanvas = () => {
             const impulseX = (2 * dotProduct * dx) / (distance * distance)
             const impulseY = (2 * dotProduct * dy) / (distance * distance)
 
-            ball.dx += impulseX * elasticity
-            ball.dy += impulseY * elasticity
+            if (!ball.isDragged) {
+              ball.dx += impulseX * elasticity
+              ball.dy += impulseY * elasticity
+            }
             otherBall.dx -= impulseX * elasticity
             otherBall.dy -= impulseY * elasticity
           }
@@ -209,6 +280,7 @@ const SkillCanvas = () => {
       dx: (Math.random() * 2 - 1) * randomSpawnForceMultiplier,
       dy: (Math.random() * 2 - 1) * randomSpawnForceMultiplier,
       img: imgSrc,
+      isHovered: false,
     }
     setBalls((prevBalls) => [...prevBalls, ball])
   }
