@@ -18,7 +18,6 @@ const skills: Skills = {
       badge: tb['styled components'],
       since: 2021,
     },
-    { name: 'RWD', badge: tb.rwd, since: 2019 },
   ],
   backend: [
     { name: 'Node', badge: tb.node, since: 2020 },
@@ -41,7 +40,6 @@ const skills: Skills = {
     { name: 'GitHub', badge: tb.github, since: 2019 },
     { name: 'Linux', badge: tb.linux, since: 2018 },
     { name: 'RegEx', badge: tb.regex, since: 2020 },
-    { name: 'Mocha Tests', badge: tb.mocha, since: 2022 },
     { name: 'VSCode', badge: tb.vscode, since: 2019 },
   ],
 }
