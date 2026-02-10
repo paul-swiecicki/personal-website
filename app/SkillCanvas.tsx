@@ -109,19 +109,22 @@ const SkillCanvas = () => {
       // })
     })
 
-    function update() {
+    function update(x: number, y: number) {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       let isBallControlled = false
       balls.forEach((ball, index) => {
-        if (!ball.isDragged) {
+        if (!ball.isDragged || mouseX === 0 || mouseY === 0) {
           // Update ball position
           ball.x += ball.dx
           ball.y += ball.dy
         } else if (!isBallControlled) {
           isBallControlled = true
-          ball.x = mouseX
-          ball.y = mouseY
+
+          if (mouseX && mouseY) {
+            ball.x = mouseX
+            ball.y = mouseY
+          }
         }
 
         // Calculate the distance from the center ball
@@ -265,7 +268,7 @@ const SkillCanvas = () => {
       animationFrameHandle.current = requestAnimationFrame(update)
     }
 
-    update()
+    update(mouseX, mouseY)
   }
 
   const ballRadius = 32
