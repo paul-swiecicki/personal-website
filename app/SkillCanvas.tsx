@@ -329,8 +329,6 @@ const SkillCanvas = () => {
   return (
     <div className="canvas-container" ref={ref}>
       <canvas ref={canvasRef} />
-
-      {/* <button onClick={handleAddBall}>Add Ball</button> */}
     </div>
   )
 }
