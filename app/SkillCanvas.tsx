@@ -109,7 +109,7 @@ const SkillCanvas = () => {
       // })
     })
 
-    function update(x: number, y: number) {
+    function update() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       let isBallControlled = false
@@ -268,7 +268,7 @@ const SkillCanvas = () => {
       animationFrameHandle.current = requestAnimationFrame(update)
     }
 
-    update(mouseX, mouseY)
+    update()
   }
 
   const ballRadius = 32
@@ -284,6 +284,7 @@ const SkillCanvas = () => {
       dy: (Math.random() * 2 - 1) * randomSpawnForceMultiplier,
       img: imgSrc,
       isHovered: false,
+      isDragged: false,
     }
     setBalls((prevBalls) => [...prevBalls, ball])
   }
