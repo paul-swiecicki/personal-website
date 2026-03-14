@@ -1,16 +1,16 @@
 'use client'
+import dynamic from 'next/dynamic'
 
-import { LottieComponentProps, LottieOptions, useLottie } from 'lottie-react'
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
-export default function LottieAnimation({
-  animationData,
-}: LottieComponentProps) {
-  const options: LottieOptions = {
-    animationData,
+const LottieAnimation = ({ animationData }: any) => {
+  const defaultOptions = {
     loop: false,
+    autoplay: true,
+    animationData: animationData,
   }
 
-  const { View } = useLottie(options)
-
-  return View
+  return <Lottie {...defaultOptions} />
 }
+
+export default LottieAnimation
