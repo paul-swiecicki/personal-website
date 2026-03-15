@@ -12,6 +12,37 @@ enum View {
   'grid',
 }
 
+type ViewSwitcherProps = {
+  view: View
+  setView: React.Dispatch<React.SetStateAction<View>>
+}
+
+function ViewSwitcher({ view, setView }: ViewSwitcherProps) {
+  return (
+    <div className="view">
+      <p className="view__label">select view mode</p>
+      <div className="view__icons">
+        <div
+          className={`view__icon ${
+            view === View.atom ? ' view__icon--chosen' : ''
+          }`}
+          onClick={() => setView(View.atom)}
+        >
+          <Icon icon="tabler:sun-low"></Icon>
+        </div>
+        <div
+          className={`view__icon ${
+            view === View.grid ? ' view__icon--chosen' : ''
+          }`}
+          onClick={() => setView(View.grid)}
+        >
+          <Icon icon="material-symbols:grid-on-sharp"></Icon>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function SkillsList() {
   const [view, setView] = useState<View>(View.atom)
 
@@ -38,28 +69,8 @@ export function SkillsList() {
   return (
     <section className="skills" id="skills">
       <h2>My Skills</h2>
-      <div className="view">
-        <p className="view__label">select view mode</p>
-        <div className="view__icons">
-          <div
-            className={`view__icon ${
-              view === View.atom ? ' view__icon--chosen' : ''
-            }`}
-            onClick={() => setView(View.atom)}
-          >
-            <Icon icon="tabler:sun-low"></Icon>
-          </div>
-          <div
-            className={`view__icon ${
-              view === View.grid ? ' view__icon--chosen' : ''
-            }`}
-            onClick={() => setView(View.grid)}
-          >
-            <Icon icon="material-symbols:grid-on-sharp"></Icon>
-          </div>
-        </div>
-      </div>
-      {view ? mapSkills(skills) : <SkillCanvas></SkillCanvas>}
+      <ViewSwitcher view={view} setView={setView} />
+      {view ? mapSkills(skills) : <SkillCanvas />}
     </section>
   )
 }
