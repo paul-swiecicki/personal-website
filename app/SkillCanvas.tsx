@@ -12,22 +12,34 @@ type Ball = {
   isDragged: boolean
 }
 
-const importAll = (r: __WebpackModuleApi.RequireContext) => {
-  let images: Record<string, { default: { src: string } }> = {}
-  const requireKeys = r.keys()
-  requireKeys.slice(requireKeys.length / 2).map((item, index) => {
-    images[item.replace('./', '')] = r(item)
-  })
-
-  return images
-}
-
-const images = importAll(require.context('../public/skills', false, /\.(png)$/))
-const skillImageSrcs: string[] = []
-
-Object.keys(images).forEach((imageName) => {
-  skillImageSrcs.push(images[imageName].default.src)
-})
+const skillImageSrcs: string[] = [
+  '/skills/after_effects.png',
+  '/skills/css.png',
+  '/skills/docker.png',
+  '/skills/express.png',
+  '/skills/figma.png',
+  '/skills/gatsby.png',
+  '/skills/git.png',
+  '/skills/github.png',
+  '/skills/graphql.png',
+  '/skills/html.png',
+  '/skills/illustrator.png',
+  '/skills/javascript.png',
+  '/skills/linux.png',
+  '/skills/mongodb.png',
+  '/skills/mysql.png',
+  '/skills/next.png',
+  '/skills/node.png',
+  '/skills/photoshop.png',
+  '/skills/php.png',
+  '/skills/react.png',
+  '/skills/redux.png',
+  '/skills/regex.png',
+  '/skills/scss.png',
+  '/skills/styled_components.png',
+  '/skills/typescript.png',
+  '/skills/vscode.png',
+]
 
 const SkillCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -97,15 +109,16 @@ const SkillCanvas = () => {
       let rect = canvas.getBoundingClientRect()
       mouseX = e.clientX - rect.left
       mouseY = e.clientY - rect.top
-      // let rect = canvas.getBoundingClientRect()
-      // mouseX = event.clientX - rect.left
-      // mouseY = event.clientY - rect.top
 
       // balls.forEach((ball) => {
       //   const distance = Math.sqrt(
       //     (mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2,
       //   )
-      //   ball.isHovered = distance < ball.radius
+      //   const isHovered = distance < ball.radius
+      //   if (isHovered) {
+      //     console.log(ball)
+      //   }
+      //   ball.isHovered = isHovered
       // })
     })
 
@@ -251,10 +264,10 @@ const SkillCanvas = () => {
       ctx.arc(centerBall.x, centerBall.y, centerBall.radius, 0, Math.PI * 2)
       ctx.closePath()
 
-      // console.log(balls)
       if (balls.length) {
         const image = new Image()
-        image.src = SkillsAtomLogo.src
+        image.src = './pauls-stroke.png'
+
         ctx.globalCompositeOperation = 'source-over'
         ctx.drawImage(
           image,
